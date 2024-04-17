@@ -115,35 +115,41 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        obej = {}
-        pars_args = args.split()
-        if not pars_args[0]:
-            print("** class name missing **")
-            return
-        elif pars_args[0] not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-            return
-        for x in pars_args:
-            if '=' in x:
-                param = x.split("=")
-                key = param[0]
-                value = param[1]
-                if value[0] == value[-1] == '"':
-                    value = value.replace('"', '').replace('_', ' ')
+        try:
+            class_name = arg.split(" ")[0]
+            if len(class_name) == 0:
+                print("** class name missing **")
+                return
+            if class_name and class_name not in self.valid_classes:
+                print("** class doesn't exist **")
+                return
+
+            kwargs = {}
+            commands = arg.split(" ")
+            for i in range(1, len(commands)):
+                
+                key = commands[i].split("=")[0]
+                value = commands[i].split("=")[1]
+                #key, value = tuple(commands[i].split("="))
+                if value.startswith('"'):
+                    value = value.strip('"').replace("_", " ")
                 else:
                     try:
-                        value = int(value)
-                    except:
-                        try:
-                            value = float(value)
-                        except:
-                            continue
-        obej[key] = value
-        new_instance = HBNBCommand.classes[pars_args[0]](obej)
+                        value = eval(value)
+                    except (SyntaxError, NameError):
+                        continue
+                kwargs[key] = value
 
-        storage.save()
-        print(new_instance.id)
-        storage.save()
+            if kwargs == {}:
+                new_instance = eval(class_name)()
+            else:
+                new_instance = eval(class_name)(**kwargs)
+            storage.new(new_instance)
+            print(new_instance.id)
+            storage.save()
+        except ValueError:
+            print(ValueError)
+            return
 
     def help_create(self):
         """ Help information for the create method """
