@@ -10,6 +10,7 @@ from os.path import isdir
 
 
 def do_pack():
+    """script that generates a .tgz archive"""
     try:
         date = datetime.now().strftime("%Y%m%d%H%M%S")
         if isdir("versions") is False:
