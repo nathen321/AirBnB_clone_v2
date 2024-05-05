@@ -44,3 +44,11 @@ def do_deploy(archive_path):
         return True
     except Exception as e:
         return False
+
+
+def deploy():
+    """ Fabric creates and distributes an archive to your web servers"""
+    path = do_pack()
+    if exists() is False:
+        return False
+    return do_deploy(path)
