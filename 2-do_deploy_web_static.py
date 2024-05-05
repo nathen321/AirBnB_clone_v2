@@ -42,5 +42,5 @@ def do_deploy(archive_path):
         sudo('rm -rf /data/web_static/current')
         sudo('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
         return True
-    except:
+    except Expecte:
         return False
