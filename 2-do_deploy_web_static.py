@@ -6,7 +6,7 @@ using the function do_deploy.
 """
 
 from datetime import datetime
-from fabric.api import *
+from fabric.api import env, local, put, sudo
 from os.path import exists
 
 
