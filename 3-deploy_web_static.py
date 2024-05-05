@@ -6,7 +6,7 @@ folder of your AirBnB Clone repo, using the function do_pack.
 
 from datetime import datetime
 from fabric.api import *
-from os.path import exists
+from os.path import exists, isdir
 
 
 env.hosts = ['100.26.239.249', '34.232.77.141']
@@ -49,6 +49,8 @@ def do_deploy(archive_path):
 def deploy():
     """ Fabric creates and distributes an archive to your web servers"""
     path = do_pack()
-    if exists() is False:
+    if path is None:
+        print("off")
         return False
-    return do_deploy(path)
+    state = do_deploy(path)
+    return state
