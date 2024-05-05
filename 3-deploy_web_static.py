@@ -5,7 +5,7 @@ folder of your AirBnB Clone repo, using the function deplooy.
 """
 
 from datetime import datetime
-from fabric.api import env, local, put, run
+from fabric.api import env, local, put, run, sudo
 from os.path import exists, isdir
 
 

@@ -22,6 +22,7 @@ def do_deploy(archive_path):
         Otherwise - True.
     """
     if exists(archive_path) is False:
+        print("shit")
         return False
     try:
         file_n = archive_path.split("/")[-1]
