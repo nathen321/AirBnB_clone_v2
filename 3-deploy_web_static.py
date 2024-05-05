@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Fabric script that generates a .tgz archive from the contents of the web_static
-folder of your AirBnB Clone repo, using the function do_pack.
+Fabric script tha generate tar acrchive and deploy it to the web serv
+folder of your AirBnB Clone repo, using the function deplooy.
 """
 
 from datetime import datetime
