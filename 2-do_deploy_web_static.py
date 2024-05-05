@@ -5,7 +5,7 @@ folder of your AirBnB Clone repo
 using the function do_deploy.
 """
 
-from fabric.api import env, local, put, run
+from fabric.api import env, put, run
 from os.path import exists
 
 
@@ -21,7 +21,6 @@ def do_deploy(archive_path):
         Otherwise - True.
     """
     if exists(archive_path) is False:
-        print("shit")
         return False
     try:
         file_n = archive_path.split("/")[-1]
