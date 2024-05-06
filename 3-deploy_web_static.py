@@ -7,7 +7,7 @@ using the function do_deploy.
 """
 
 from fabric.api import env, put, run, local
-from os.path import exists, isdir
+import os
 from datetime import datetime
 
 
