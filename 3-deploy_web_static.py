@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 # Fabfile to create and distribute an archive to a web server.
+"""
+Fabric script that generates deploy tothe web serv
+folder of your AirBnB Clone repo
+using the function do_deploy.
+"""
+
+from fabric.api import env, put, run, local
 from os.path import exists
 from datetime import datetime
-from fabric.api import env
-from fabric.api import local
-from fabric.api import put
-from fabric.api import run
+
 
 env.hosts = ['54.237.2.199', '3.85.1.131']
 
