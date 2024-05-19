@@ -32,7 +32,7 @@ def bigP(text="is cool"):
 @app.route("/number/<int:n>", strict_slashes=False)
 def Nisnum(n):
     if type(n) is int:
-        return "{} is a numbe".format(n)
+        return "{:d} is a numbe".format(n)
 
 
 if __name__ == '__main__':
