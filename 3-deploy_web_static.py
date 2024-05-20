@@ -11,7 +11,7 @@ import os
 from datetime import datetime
 
 
-env.hosts = ['54.237.2.199', '3.85.1.131']
+env.hosts = ['52.201.160.255', '100.25.102.0']
 
 
 def do_pack():
